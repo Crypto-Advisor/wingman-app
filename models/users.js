@@ -3,29 +3,49 @@ const pool = require('./database');
 
 //users
 
-const create_user = (req, res, next) =>{
-
+const create_user = async (req, res, next) =>{
+  const {user_id} = req.body;
+  try{
+    let result = await pool.query('INSERT INTO users (user_id, like_weight, viewing_credits) VALUES ($1, $2, $3)', [id, 0, 0]);
+    res.json({success: true, result});
+  }
+  catch(err){
+    res.json({success: false, err});
+  }
 }
 
-const get_user = (req, res, next) =>{
-  const id = req.params.id;
+const get_user = async (req, res, next) =>{
+  const {id} = req.params;
+  try{
+    let result = await pool.query('SELECT like_weight FROM users WHERE user_id=$1', [id]);
+    res.json({success: true, result});
+  }
+  catch(err){
+    res.json({success: false, err});
+  }
 }
 
-const update_user = (req, res, next) =>{
-  const id = req.params.id;
+const update_user = async (req, res, next) =>{
+  const {user_id, like_weight, viewing_credits} = req.body;
+  try{
+    let result = pool.query('UPDATE users SET like_weight=$1, viewing_credits=$2 WHERE user_id=$3', [like_weight, viewing_credits, user_id]);
+    res.json({success: true, result});
+  }
+  catch(err){
+    res.json({success: false, err});
+  }
 }
 
-const delete_user = (req, res, next) =>{
-
+const delete_user = async (req, res, next) =>{
+  const {id} = req.params;
+  try{
+    let result = pool.query('DELETE FROM users WHERE user_id=$1', [id]);
+    res.json({success: true, result});
+  }
+  catch(err){
+    res.json({success: false, err});
+  }
 }
 
-const create = (description) =>
-  pool.query('INSERT INTO todo (description) VALUES ($1) RETURNING *', [
-    description,
-  ]);
-
-const get = () => pool.query('SELECT * FROM todo');
-
-const remove = (id) => pool.query('DELETE FROM todo WHERE todo_id = $1', [id]);
 
 module.exports = { create_user, get_user, update_user, delete_user };
