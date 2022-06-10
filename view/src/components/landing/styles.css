@@ -47,6 +47,7 @@
     border-radius: 15px;
 }
 
+
 .banner-text{
     width: 342px;
     height: 159px;
@@ -60,9 +61,12 @@
     color: #4D4D4D;
 }
 
-.colored-rectangle{
-    box-sizing: border-box;
+.picture{}
 
+.colored-rectangle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 330px;
     height: 332px;
 

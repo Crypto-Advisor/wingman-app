@@ -17,7 +17,9 @@ const Landing = () =>{
                     <p className='logo-text'>wingman</p>
                 </div>
                 <div className='signin-container'>
-                    <button className='signin-button'>Sign in</button>
+                    <Link to='/login'> 
+                        <button className='signin-button'>Sign in</button>
+                    </Link>
                 </div>
             </div>
             <div className='banner'>
@@ -44,14 +46,14 @@ const Landing = () =>{
                             </div>
                         </div>
                         <div className='stat-item'>
-                            <p className='stat-text'><b>Keep this photo:</b> 87%</p>
+                            <p className='stat-text'><b>Right swipes:</b> 87%</p>
                             <div className='stat-graphic'>
                                 <div className='stat2-internal-graphic'>
                                 </div>
                             </div>
                         </div>
                         <div className='stat-item'>
-                            <p className='stat-text'><b>Keep this photo:</b> 87%</p>
+                            <p className='stat-text'><b>Profile Percentile:</b> 87%</p>
                             <div className='stat-graphic'>
                                 <div className='stat3-internal-graphic'>
                                 </div>
