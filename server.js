@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
+const csrf = require("csurf")
 
 /**
  * -------------- GENERAL SETUP ----------------
@@ -13,18 +14,13 @@ require('dotenv').config();
 
 // Create the Express application
 var app = express();
+const port = process.env.PORT || 3000;
+const csrfMiddleware = csrf({ cookie: true })
 
-// Configures the database and opens a global connection that can be used in any module with `mongoose.connection`
-require('./config/database');
 
-// Must first load the models
-require('./models/user');
-require('./models/form')
-require('./models/responses')
-
-require('./config/passport')(passport);
-
-app.use(passport.initialize());
+//uncomment if passport is needed
+//require('./config/passport')(passport);
+//app.use(passport.initialize());
 
 // Instead of using body-parser middleware, use the new Express implementation of the same thing
 app.use(express.json());
@@ -33,6 +29,12 @@ app.use(express.urlencoded({extended: true}));
 // Allows our Angular application to make HTTP requests to Express application
 app.use(cors());
 app.use(cookieParser());
+app.use(csrfMiddleware)
+
+app.all("*", (req, res, next) => {
+    res.cookie("XSRF-TOKEN", req.csrfToken());
+    next();
+})
 
 /**
  * -------------- ROUTES ----------------
@@ -47,4 +49,6 @@ app.use(require('./routes'));
  */
 
 // Server listens on http://localhost:3000
-app.listen(3000);
+app.listen(port, () =>{
+    console.log(`server is running on port ${port}`);
+});

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-import {authentication} from '../../utils/firebase'
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import {firebase, authentication} from '../../utils/firebase'
+import { RecaptchaVerifier, signInWithPhoneNumber, onAuthStateChanged } from "firebase/auth";
 
 
 import swan from '../../images/swan.svg'
@@ -13,6 +13,8 @@ const LoginPopup = () =>{
     const [phoneNumber, setPhoneNumber] = useState("+1")
     const [expandForm, setExpandForm] = useState(false)
     const [OTP, setOTP] = useState("");
+    const [auth, setAuth] = useState(false || window.localStorage.getItem("auth") === "true");
+    const [token, setToken] = useState("");
 
     
     const generateRecaptcha = () =>{
@@ -50,6 +52,8 @@ const LoginPopup = () =>{
                 // User signed in successfully.
                 const user = result.user;
                 console.log(user)
+                window.localStorage.setItem("auth", "true")
+                setAuth(true)
                 // ...
               }).catch((error) => {
                 // User couldn't sign in (bad verification code?)
@@ -57,6 +61,22 @@ const LoginPopup = () =>{
               });
         }
     }
+
+    useEffect(() =>{
+        onAuthStateChanged(authentication, (userCred) =>{
+            if(userCred){
+                userCred.getIdToken().then((token) =>{
+                    setToken(token)
+                })
+                window.localStorage.setItem("auth", "true")
+                setAuth(true)
+            } else{
+                setAuth(false)
+            }
+        })
+    }, [])
+
+
 
     return(
         <div className='popup-box'>

@@ -1,3 +1,4 @@
 node_modules
 .env
 view/src/utils/firebase.js
+config/serviceAccountKey.json
