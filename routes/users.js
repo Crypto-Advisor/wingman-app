@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const decodeToken = require('../utils/index')
 
 const {
     create_user, 
@@ -9,7 +10,7 @@ const {
 
 router.put('/create', create_user);
 
-router.get('/:id', get_user);
+router.get('/:id', decodeToken, get_user);
 
 router.post('/update/:id', update_user);
 
