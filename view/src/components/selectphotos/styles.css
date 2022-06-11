@@ -1,0 +1,35 @@
+.select-photo-popup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 359px;
+    height: 338px;
+
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.select-photo-image{
+    margin-top: 5px;
+    box-sizing: border-box;
+
+    border: 1.5px solid #FFFFFF;
+}
+
+.select-photo-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    width: 272px;
+    height: 136px;
+
+    border: 1px dashed #A4A4A4;
+    border-radius: 10px;
+}

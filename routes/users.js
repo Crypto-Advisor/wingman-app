@@ -12,8 +12,8 @@ router.put('/create', create_user);
 
 router.get('/:id', decodeToken, get_user);
 
-router.post('/update/:id', update_user);
+router.post('/update/:id', decodeToken, update_user);
 
-router.delete('/delete/:id', delete_user);
+router.delete('/delete/:id', decodeToken, delete_user);
 
 module.exports = router;

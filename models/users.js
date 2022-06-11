@@ -17,6 +17,9 @@ const create_user = async (req, res, next) =>{
 
 const get_user = async (req, res, next) =>{
   const {id} = req.params;
+  if(req.user.user_id !== id){
+    res.json({success: false, error: "invalid user"});
+  }
   try{
     let result = await pool.query('SELECT like_weight FROM users WHERE user_id=$1', [id]);
     res.json({success: true, result});
