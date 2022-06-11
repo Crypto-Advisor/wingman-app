@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const {decodeToken} = require('../utils/index')
 
 const {
     create_images, 
@@ -8,14 +9,14 @@ const {
     delete_images
 } = require('../models/images');
 
-router.put('/create', create_images);
+router.put('/create', decodeToken, create_images);
 
-router.get('/', get_images);
+router.get('/', decodeToken, get_images);
 
-router.get('/:id', get_user_images);
+router.get('/:id', decodeToken, get_user_images);
 
-router.post('/update/', update_images);
+router.post('/update', decodeToken, update_images);
 
-router.delete('/delete/:id', delete_images);
+router.delete('/delete/:id', decodeToken, delete_images);
 
 module.exports = router;
