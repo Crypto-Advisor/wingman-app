@@ -15,7 +15,7 @@ require('dotenv').config();
 // Create the Express application
 var app = express();
 const port = process.env.PORT || 3000;
-const csrfMiddleware = csrf({ cookie: true })
+//const csrfMiddleware = csrf({ cookie: true })
 
 
 //uncomment if passport is needed
@@ -29,12 +29,12 @@ app.use(express.urlencoded({extended: true}));
 // Allows our Angular application to make HTTP requests to Express application
 app.use(cors());
 app.use(cookieParser());
-app.use(csrfMiddleware)
+//app.use(csrfMiddleware)
 
-app.all("*", (req, res, next) => {
-    res.cookie("XSRF-TOKEN", req.csrfToken());
-    next();
-})
+// app.all("*", (req, res, next) => {
+//     res.cookie("XSRF-TOKEN", req.csrfToken());
+//     next();
+// })
 
 /**
  * -------------- ROUTES ----------------

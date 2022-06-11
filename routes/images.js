@@ -6,7 +6,7 @@ const {
     get_user_images, 
     update_images, 
     delete_images
-} = require('../models/users');
+} = require('../models/images');
 
 router.put('/create', create_images);
 

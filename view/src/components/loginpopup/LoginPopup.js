@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import {firebase, authentication} from '../../utils/firebase'
 import { RecaptchaVerifier, signInWithPhoneNumber, onAuthStateChanged } from "firebase/auth";
-
+import { loginThunk } from './LoginPopupSlice';
 
 import swan from '../../images/swan.svg'
 import './styles.css'
 
 
 const LoginPopup = () =>{
+    const dispatch = useDispatch();
     const [phoneNumber, setPhoneNumber] = useState("+1")
     const [expandForm, setExpandForm] = useState(false)
     const [OTP, setOTP] = useState("");
@@ -50,8 +51,13 @@ const LoginPopup = () =>{
             let confirmationResult = window.confirmationResult
             confirmationResult.confirm(otp).then((result) => {
                 // User signed in successfully.
-                const user = result.user;
-                console.log(user)
+                //const user = result.user.getIdToken();
+                //dispatch(loginThunk(user.accessToken))
+                window.localStorage.setItem("uid", result.user.uid)
+                dispatch(loginThunk(result.user.uid))
+                result.user.getIdToken().then((token) =>{
+                    console.log(token)
+                })
                 window.localStorage.setItem("auth", "true")
                 setAuth(true)
                 // ...

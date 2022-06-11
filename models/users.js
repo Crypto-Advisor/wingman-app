@@ -6,11 +6,12 @@ const pool = require('./database');
 const create_user = async (req, res, next) =>{
   const {user_id} = req.body;
   try{
-    let result = await pool.query('INSERT INTO users (user_id, like_weight, viewing_credits) VALUES ($1, $2, $3)', [id, 0, 0]);
+    let result = await pool.query('INSERT INTO users (user_id, like_weight, viewing_credits) VALUES ($1, $2, $3)', [user_id, 0, 0]);
     res.json({success: true, result});
   }
   catch(err){
     res.json({success: false, err});
+    console.log(err)
   }
 }
 

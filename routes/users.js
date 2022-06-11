@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const decodeToken = require('../utils/index')
+const {decodeToken} = require('../utils/index')
 
 const {
     create_user, 
@@ -14,6 +14,6 @@ router.get('/:id', decodeToken, get_user);
 
 router.post('/update/:id', update_user);
 
-router.delete('/delete', delete_user);
+router.delete('/delete/:id', delete_user);
 
 module.exports = router;
