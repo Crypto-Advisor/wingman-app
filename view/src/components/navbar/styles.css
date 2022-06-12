@@ -1,0 +1,14 @@
+.navbar-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+#navbar-logo{
+
+}
+
+#navbar-button{
+    float: right;
+}
