@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createImages } from "../../utils/images";
+import { idToken } from "../../utils/misc";
 
 const initialState = {
     loading: true
@@ -8,6 +9,7 @@ const initialState = {
 export const uploadImage = createAsyncThunk(
     'photos/uploadImage',
     async({uuid, url}) =>{
+        await idToken()
         console.log(url)
         let token = "Bearer " + window.localStorage.getItem('auth_token')
         const res = await createImages(uuid, window.localStorage.getItem('uid'), url, token)
