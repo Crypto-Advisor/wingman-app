@@ -9,8 +9,9 @@ axios.defaults.headers.common = {
 
 const baseUrl = '/images'
 
-export const createImages = async(user_id, token) =>{
-    const req = axios.put(`${S_PORT}${baseUrl}/create`, {user_id}, {
+export const createImages = async(id, user_id, image_url, token) =>{
+
+    const req = axios.put(`${S_PORT}${baseUrl}/create`, {id, user_id, image_url, likes: 0, view_weight: 0}, {
         headers: {
             'Authorization': token
         }

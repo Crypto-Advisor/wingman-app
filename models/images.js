@@ -4,11 +4,13 @@ const pool = require('./database');
 
 const create_images = async (req, res, next) =>{
     const {id, user_id, image_url, likes, view_weight} = req.body;
+    console.log(image_url)
     try{
-        let result = await pool.query('INSERT INTO images (id, user_id, image_url, likes, view_weight, DEFAULT) VALUES ($1, $2, $3, $4, $5)', [id, user_id, image_url, likes, view_weight]);
+        let result = await pool.query('INSERT INTO images (id, user_id, image_url, likes, view_weight) VALUES ($1, $2, $3, $4, $5)', [id, user_id, image_url, likes, view_weight]);
         res.json({success: true, result});
     }
     catch(err){
+        console.log(err)
         res.json({success: false, err});
     }
 }

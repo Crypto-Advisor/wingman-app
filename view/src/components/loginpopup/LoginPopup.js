@@ -51,13 +51,13 @@ const LoginPopup = () =>{
             let confirmationResult = window.confirmationResult
             confirmationResult.confirm(otp).then((result) => {
                 // User signed in successfully.
-                //const user = result.user.getIdToken();
-                //dispatch(loginThunk(user.accessToken))
                 window.localStorage.setItem("uid", result.user.uid)
                 dispatch(loginThunk(result.user.uid))
                 result.user.getIdToken().then((token) =>{
+                    window.localStorage.setItem('auth_token', token)
                     console.log(token)
                 })
+                console.log(token)
                 window.localStorage.setItem("auth", "true")
                 setAuth(true)
                 // ...

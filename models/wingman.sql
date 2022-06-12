@@ -7,7 +7,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE images(
-  	id integer PRIMARY KEY,
+  	id varchar(100) PRIMARY KEY,
     user_id varchar(100) NOT NULL,
     image_url varchar(512) NOT NULL,
     likes float8 NOT NULL,
