@@ -1,0 +1,45 @@
+.profile-items-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.profile-picture-item{
+    width: 159px;
+    height: 215px;
+    border-radius: 12px 12px 0px 0px;
+}
+
+.profile-picture-item-bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 159px;
+    height: 38px;
+
+    background: linear-gradient(90deg, #FF5757 4.72%, #FFB03A 100%);
+    border-radius: 0px 0px 12px 12px;
+}
+
+.profile-picture-item-bottom p{
+    width: 144px;
+    height: 18px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}

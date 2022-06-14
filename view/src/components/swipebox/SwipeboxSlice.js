@@ -1,24 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getUserImages } from "../../utils/images";
+import { getImages } from "../../utils/images";
 import { idToken } from "../../utils/misc";
 
 const initialState = {
     pictures: [],
-    loading: true
+    loading: true,
+    loaded: false
 }
 
 export const getPictures = createAsyncThunk(
-    'pictures/getPictures',
+    'swipebox/getPictures',
     async() =>{
         await idToken()
         let token = "Bearer " + window.localStorage.getItem('auth_token')
-        const res = await getUserImages(window.localStorage.getItem('uid'), token)
+        const res = await getImages(token)
         return res.result.rows
     }
 )
 
-const PicturesListSlice = createSlice({
-    name: 'pictures',
+const SwipeboxSlice = createSlice({
+    name: 'swipebox',
     initialState,
     reducers:{
 
@@ -30,6 +31,7 @@ const PicturesListSlice = createSlice({
         [getPictures.fulfilled]: (state, action) =>{
             state.pictures = action.payload
             state.loading = false;
+            state.loaded = true;
         },
         [getPictures.rejected]: (state) =>{
             state.loading = false;
@@ -37,5 +39,5 @@ const PicturesListSlice = createSlice({
     }
 })
 
-export const PicturesListSelector = state => state.pictures
-export default PicturesListSlice.reducer
+export const SwipeboxSelector = state => state.pictures
+export default SwipeboxSlice.reducer

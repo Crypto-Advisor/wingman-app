@@ -7,15 +7,29 @@ import './styles.css';
 
 const PicturesList = () =>{
     const dispatch = useDispatch();
-    const [pictures, setPictures] = useState([])
+    const loading = useSelector(state => state.pictures.loading)
+    const pictures = useSelector(state => state.pictures.pictures)
 
     useEffect(() =>{
         dispatch(getPictures())
     }, [])
 
+    useEffect(() =>{
+        console.log(pictures)
+    }, [loading])
+
     return(
-        <div>
-            hi
+        <div className='profile-items-container'>
+            {pictures.map((picture) =>{
+                return(
+                    <div key={picture.id} className='profile-item'>
+                        <img className='profile-picture-item' src={picture.image_url}></img>
+                        <div className='profile-picture-item-bottom'>
+                            <p>Score</p>
+                        </div>
+                    </div>
+                )
+            })}
         </div>
     )
 }

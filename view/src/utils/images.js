@@ -19,8 +19,8 @@ export const createImages = async(id, user_id, image_url, token) =>{
     return req.then(response => response.data);
 }
 
-export const getImages = async(user_id, token) =>{
-    const req = axios.get(`${S_PORT}${baseUrl}/${user_id}`, {
+export const getImages = async(token) =>{
+    const req = axios.get(`${S_PORT}${baseUrl}`, {
         headers: {
             'Authorization': token
         }
@@ -29,7 +29,7 @@ export const getImages = async(user_id, token) =>{
 }
 
 export const getUserImages = async(user_id, token) =>{
-    const req = axios.get(`${S_PORT}${baseUrl}/create/${user_id}`, {
+    const req = axios.get(`${S_PORT}${baseUrl}/${user_id}`, {
         headers: {
             'Authorization': token
         }

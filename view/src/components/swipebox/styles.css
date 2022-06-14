@@ -1,0 +1,41 @@
+.swipebox-container img{
+    pointer-events: none;
+}
+
+#swipebox-img-container img{
+    width: 373px;
+    height: 520px;
+
+    border-radius: 12px;
+}
+
+#swipebox-img-container {
+    width: 373px;
+    height: 520px;
+
+    border-radius: 12px;
+}
+
+@keyframes right {
+    from  {transform: translate(0rem) rotate(0deg) !important;}
+    to {transform: translate(30rem) rotate(30deg) !important;}
+  }
+
+.right-swipe{
+    position: relative;
+    animation-name: right;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+@keyframes left {
+    from  {transform: translate(0rem) rotate(0deg) !important;}
+    to {transform: translate(-30rem) rotate(-30deg) !important;}
+  }
+
+.left-swipe{
+    position: relative;
+    animation-name: left;
+    animation-duration: 4s;
+    animation-delay: 2s;
+}
