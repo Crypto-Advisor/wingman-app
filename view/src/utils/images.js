@@ -37,8 +37,8 @@ export const getUserImages = async(user_id, token) =>{
     return req.then(response => response.data);
 }
 
-export const updateImages = async(user_id, token) =>{
-    const req = axios.post(`${S_PORT}${baseUrl}/update`, {user_id}, {
+export const updateImages = async(id, likes, total_votes, view_weight, token) =>{
+    const req = axios.post(`${S_PORT}${baseUrl}/update`, {id, likes, total_votes, view_weight}, {
         headers: {
             'Authorization': token
         }

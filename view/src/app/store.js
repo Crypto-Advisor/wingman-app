@@ -4,6 +4,7 @@ import LoginPopupSlice from '../components/loginpopup/LoginPopupSlice';
 import PicturesListSlice from '../components/pictureslist/PicturesListSlice';
 import SelectPhotosSlice from '../components/selectphotos/SelectPhotosSlice';
 import SwipeboxSlice from '../components/swipebox/SwipeboxSlice';
+import SwipeCreditsSlice from '../components/swipecredits/SwipeCreditsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     login: LoginPopupSlice,
     photos: SelectPhotosSlice,
     pictures: PicturesListSlice,
-    swipebox: SwipeboxSlice
+    swipebox: SwipeboxSlice,
+    swipecredits: SwipeCreditsSlice
   },
 });

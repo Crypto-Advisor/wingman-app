@@ -6,7 +6,7 @@ const create_images = async (req, res, next) =>{
     const {id, user_id, image_url, likes, view_weight} = req.body;
     console.log(image_url)
     try{
-        let result = await pool.query('INSERT INTO images (id, user_id, image_url, likes, view_weight) VALUES ($1, $2, $3, $4, $5)', [id, user_id, image_url, likes, view_weight]);
+        let result = await pool.query('INSERT INTO images (id, user_id, image_url, likes, total_votes, view_weight) VALUES ($1, $2, $3, $4, $5, $6)', [id, user_id, image_url, likes, 0, view_weight]);
         res.json({success: true, result});
     }
     catch(err){
@@ -37,9 +37,9 @@ const get_user_images = async (req, res, next) =>{
 }
 
 const update_images = async (req, res, next) =>{
-    const {id, likes, view_weight} = req.body;
+    const {id, likes, total_votes, view_weight} = req.body;
     try{
-        let result = pool.query('UPDATE images SET likes=$1, view_weight=$2 WHERE id=$3', [likes, view_weight, id]);
+        let result = pool.query('UPDATE images SET likes=$1, total_votes=$2, view_weight=$3 WHERE id=$4', [likes, total_votes, view_weight, id]);
         res.json({success: true, result});
       }
       catch(err){

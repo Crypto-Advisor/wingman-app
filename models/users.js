@@ -6,7 +6,7 @@ const pool = require('./database');
 const create_user = async (req, res, next) =>{
   const {user_id} = req.body;
   try{
-    let result = await pool.query('INSERT INTO users (user_id, like_weight, viewing_credits) VALUES ($1, $2, $3)', [user_id, 0, 0]);
+    let result = await pool.query('INSERT INTO users (user_id, like_weight, total_votes, viewing_credits) VALUES ($1, $2, $3, $4)', [user_id, 0, 0, 0]);
     res.json({success: true, result});
   }
   catch(err){
@@ -21,7 +21,7 @@ const get_user = async (req, res, next) =>{
     res.json({success: false, error: "invalid user"});
   }
   try{
-    let result = await pool.query('SELECT like_weight FROM users WHERE user_id=$1', [id]);
+    let result = await pool.query('SELECT like_weight, total_votes, viewing_credits FROM users WHERE user_id=$1', [id]);
     res.json({success: true, result});
   }
   catch(err){
@@ -30,9 +30,9 @@ const get_user = async (req, res, next) =>{
 }
 
 const update_user = async (req, res, next) =>{
-  const {user_id, like_weight, viewing_credits} = req.body;
+  const {user_id, like_weight, total_votes, viewing_credits} = req.body;
   try{
-    let result = pool.query('UPDATE users SET like_weight=$1, viewing_credits=$2 WHERE user_id=$3', [like_weight, viewing_credits, user_id]);
+    let result = pool.query('UPDATE users SET like_weight=$1, total_votes=$2,viewing_credits=$3 WHERE user_id=$4', [like_weight, total_votes, viewing_credits, user_id]);
     res.json({success: true, result});
   }
   catch(err){

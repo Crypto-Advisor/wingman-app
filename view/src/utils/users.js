@@ -23,8 +23,8 @@ export const getUser = async(user_id, token) =>{
     return req.then(response => response.data);
 }
 
-export const updateUser = async(user_id, like_weight, viewing_credits, token) =>{
-    const req = axios.post(`${S_PORT}${baseUrl}/update/${user_id}`, {user_id, like_weight, viewing_credits}, {
+export const updateUser = async(user_id, like_weight, total_votes, viewing_credits, token) =>{
+    const req = axios.post(`${S_PORT}${baseUrl}/update`, {user_id, like_weight, total_votes, viewing_credits}, {
         headers: {
             'Authorization': token
         }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useSwipeable } from 'react-swipeable';
 import SwipeCredits from '../swipecredits/SwipeCredits';
 
-import { getPictures } from './SwipeboxSlice';
+import { getPictures, updateStats } from './SwipeboxSlice';
 
 import './styles.css';
 
@@ -14,16 +14,25 @@ const Swipebox = () =>{
     const dispatch = useDispatch()
     const pictures = useSelector(state => state.swipebox.pictures)
     const loaded = useSelector(state => state.swipebox.loaded)
+    const stats = useSelector(state => state.swipecredits.stats)
 
     const handlers = useSwipeable({
         onSwipedLeft: (e) =>{
             console.log('swiped left')
             document.getElementById('swipebox-img-container').className = 'left-swipe'
+            const new_viewing = stats.viewing_credits + 1
+            const new_weight = stats.like_weight 
+            const new_total = stats.total_votes + 1
+            dispatch(updateStats({new_weight, new_total, new_viewing}))
             getNextImage()
         },
         onSwipedRight: (e) =>{
             console.log('swiped right')
             document.getElementById('swipebox-img-container').className = 'right-swipe'
+            const new_viewing = stats.viewing_credits + 1
+            const new_weight = stats.like_weight + 1
+            const new_total = stats.total_votes + 1
+            dispatch(updateStats({new_weight, new_total, new_viewing}))
             getNextImage()
         },
         swipeDuration: 500,
