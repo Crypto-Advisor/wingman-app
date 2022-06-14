@@ -34,10 +34,10 @@ export const updateStats = createAsyncThunk(
 
 export const updateImage = createAsyncThunk(
     'swipebox/updateImage',
-    async({id, likes, view_weight}) =>{
+    async({id, likes, total_votes, view_weight}) =>{
         await idToken()
         let token = "Bearer " + window.localStorage.getItem('auth_token')
-        const res = await updateImages(id, likes, 0, view_weight, token)
+        const res = await updateImages(id, likes, total_votes, view_weight, token)
         console.log(res)
     }
 )

@@ -12,15 +12,27 @@ const Landing = () =>{
     return(
         <div className='landing-container'>
             <div className='nav-bar'>
-                <div className='logo-container'>
-                    <img className='logo' src={swan} ></img>
-                    <p className='logo-text'>wingman</p>
-                </div>
-                <div className='signin-container'>
-                    <Link to='/login'> 
-                        <button className='signin-button'>Sign in</button>
+                <Link to='/' className='link'> 
+                    <div className='logo-container'>
+                        <img className='logo' src={swan} ></img>
+                        <p className='logo-text'>wingman</p>
+                    </div>
+                </Link>
+                
+                    {window.localStorage.getItem('auth') ? 
+                    <Link to='/profile' className='link'>
+                        <div className='signin-container'>
+                                <button className='signin-button'>Profile</button>
+                        </div>
                     </Link>
-                </div>
+                    :
+                    <Link to='/login' className='link'>
+                        <div className='signin-container'>
+                                <button className='signin-button'>Sign in</button>
+                        </div>
+                    </Link>
+                    }
+                
             </div>
             <div className='banner'>
                 <p className='banner-text'>

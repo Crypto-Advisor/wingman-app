@@ -12,3 +12,7 @@
 #navbar-button{
     float: right;
 }
+
+.link{
+    text-decoration: none;
+}

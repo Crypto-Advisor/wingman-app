@@ -1,4 +1,12 @@
 .popup-box{
+    position:fixed;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+     transform: translate(-50%,-50%);
+
     width: 359px;
     height: 235px;
 
@@ -54,4 +62,39 @@
     text-align: center;
 
     color: #4E4E4E;
+}
+
+.login-entry{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#phone{
+    width: 230px;
+    height: 31px;
+
+    background: #EEEEEE;
+    border-radius: 10px;
+    border: none;
+}
+
+.submit-button{
+    width: 85px;
+    height: 31px;
+
+    background: linear-gradient(88.48deg, #FF7B7B 2.74%, #FF9458 63.5%, #FF6464 113.84%);
+    border-radius: 0px 15px 15px 0px;
+    border: none;
+}
+
+#code{
+    width: 257px;
+    height: 31px;
+
+    background: #EEEEEE;
+    border-radius: 10px;
+    border: none;
 }

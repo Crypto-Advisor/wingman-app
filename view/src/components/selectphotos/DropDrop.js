@@ -23,7 +23,7 @@ function DragDrop() {
         }).catch(err => console.log(err))
         console.log(snapshot)
         console.log('Uploaded a blob or file!');
-
+        window.location = '/profile'
       });
   };
   return (

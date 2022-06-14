@@ -6,18 +6,22 @@ import Navbar from '../navbar/Navbar'
 import Stats from '../stats/Stats';
 import './styles.css';
 import PicturesList from '../pictureslist/PicturesList'
+import SelectPhotos from '../selectphotos/SelectPhotos';
 
 const Profile = () =>{
+    const[open, setOpen] = useState(false)
+
     return(
         <div>
             <Navbar />
             <Stats />
-            <Link to="/upload" id='add-photos-button'>
-                <div id='add-photos-container'>
-                    Add Photos
-                </div>
-            </Link>
+            <div id='add-photos-container' onClick={() => setOpen(true)}>
+                Add Photos
+            </div>
             <PicturesList />
+            {open ? 
+            <SelectPhotos setOpen={setOpen} />
+            : null}
 
         </div>
     )

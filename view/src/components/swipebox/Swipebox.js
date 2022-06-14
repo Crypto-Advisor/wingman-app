@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useSwipeable } from 'react-swipeable';
 import SwipeCredits from '../swipecredits/SwipeCredits';
 
-import { getPictures, updateStats } from './SwipeboxSlice';
+import { getPictures, updateStats, updateImage } from './SwipeboxSlice';
 
 import './styles.css';
 
@@ -20,19 +20,29 @@ const Swipebox = () =>{
         onSwipedLeft: (e) =>{
             console.log('swiped left')
             document.getElementById('swipebox-img-container').className = 'left-swipe'
+
+            let {id, likes, total_votes, view_weight} = pictures[imgIndex-1]
+            dispatch(updateImage({id, likes: likes, total_votes: total_votes+1, view_weight: view_weight-1}))
+
             const new_viewing = stats.viewing_credits + 1
             const new_weight = stats.like_weight 
             const new_total = stats.total_votes + 1
             dispatch(updateStats({new_weight, new_total, new_viewing}))
+
             getNextImage()
         },
         onSwipedRight: (e) =>{
             console.log('swiped right')
             document.getElementById('swipebox-img-container').className = 'right-swipe'
+
+            let {id, likes, total_votes, view_weight} = pictures[imgIndex-1]
+            dispatch(updateImage({id, likes: likes+1, total_votes: total_votes+1, view_weight: view_weight-1}))
+
             const new_viewing = stats.viewing_credits + 1
             const new_weight = stats.like_weight + 1
             const new_total = stats.total_votes + 1
             dispatch(updateStats({new_weight, new_total, new_viewing}))
+
             getNextImage()
         },
         swipeDuration: 500,

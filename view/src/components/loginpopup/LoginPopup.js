@@ -55,11 +55,10 @@ const LoginPopup = () =>{
                 dispatch(loginThunk(result.user.uid))
                 result.user.getIdToken().then((token) =>{
                     window.localStorage.setItem('auth_token', token)
-                    console.log(token)
                 })
-                console.log(token)
                 window.localStorage.setItem("auth", "true")
                 setAuth(true)
+                window.location = '/upload'
                 // ...
               }).catch((error) => {
                 // User couldn't sign in (bad verification code?)
@@ -85,29 +84,29 @@ const LoginPopup = () =>{
 
 
     return(
-        <div className='popup-box'>
-            <div className='logo-container' id='popup-logo-container'>
-                <img className='logo' id='popup-logo' src={swan} ></img>
-                <p className='logo-text' id='popup-logo' >wingman</p>
-            </div>
-            <div className='popup-description'>
-                <p className='banner-text-popup'>Phone Number</p>
-                <p className='description-text-popup'>Enter your phone number and get a code to access your account.</p>
-            </div>
-            <div>
-                <form onSubmit={sendCode}>
-                    <label htmlFor="phone">Enter your phone number:</label>
-                    <input type='tel' id="phone" name="phone" onChange={e => setPhoneNumber(e.target.value)} value={phoneNumber}></input>
-                    <input type='submit'></input>
-                </form>
-                {expandForm === true? 
-                <form>
-                    <label htmlFor="code">Enter verification code:</label>
-                    <input type='number' id="code" name="code" value={OTP} onChange={verifyOTP}></input>
-                </form>
-                :
-                null
-                }
+        <div>
+            <div className='popup-box'>
+                <div className='logo-container' id='popup-logo-container'>
+                    <img className='logo' id='popup-logo' src={swan} ></img>
+                    <p className='logo-text' id='popup-logo' >wingman</p>
+                </div>
+                <div className='popup-description'>
+                    <p className='banner-text-popup'>Phone Number</p>
+                    <p className='description-text-popup'>Enter your phone number and get a code to access your account.</p>
+                </div>
+                <div className='login-entry'>
+                    {expandForm === true? 
+                    <form>
+                        <label htmlFor="code">Enter verification code:</label>
+                        <input type='number' id="code" name="code" value={OTP} onChange={verifyOTP}></input>
+                    </form>
+                    :
+                    <form onSubmit={sendCode}>
+                        <input type='tel' id="phone" name="phone" onChange={e => setPhoneNumber(e.target.value)} value={phoneNumber}></input>
+                        <input type='submit' className='submit-button'></input>
+                    </form>
+                    }
+                </div>
             </div>
             <div id='recaptcha-container'></div>
 

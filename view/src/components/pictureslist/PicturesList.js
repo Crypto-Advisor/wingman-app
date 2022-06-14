@@ -25,7 +25,7 @@ const PicturesList = () =>{
                     <div key={picture.id} className='profile-item'>
                         <img className='profile-picture-item' src={picture.image_url}></img>
                         <div className='profile-picture-item-bottom'>
-                            <p>Score</p>
+                            <p>Score: {Math.round(picture.likes/picture.total_votes *100)}/100</p>
                         </div>
                     </div>
                 )

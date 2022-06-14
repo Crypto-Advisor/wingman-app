@@ -9,13 +9,17 @@ import './styles.css';
 const Navbar = () =>{
     return(
         <div className='navbar-container'>
-            <div className='logo-container' id='navbar-logo'>
-                <img className='logo' src={swan} ></img>
-                <p className='logo-text'>wingman</p>
-            </div>
+            <Link to='/profile' className='link'>
+                <div className='logo-container' id='navbar-logo'>
+                    <img className='logo' src={swan} ></img>
+                    <p className='logo-text'>wingman</p>
+                </div>
+            </Link>
+            <Link to='/swipe' className='link'>
             <div id='navbar-button'>
                 <img src={navbar_button} ></img>
             </div>
+            </Link>
         </div>
     )
 }
