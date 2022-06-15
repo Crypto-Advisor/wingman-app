@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { useSwipeable } from 'react-swipeable';
 import SwipeCredits from '../swipecredits/SwipeCredits';
+import Navbar from '../navbar/Navbar';
 
 import { getPictures, updateStats, updateImage } from './SwipeboxSlice';
 
@@ -72,14 +73,18 @@ const Swipebox = () =>{
     }, [loaded])
 
     return(
-        <div className='swipebox-container'>
-            <div>
-                <p>Swipe left to pass or Swipe right to like</p>
+        <div>
+            <Navbar />
+            <div className='swipebox-container'>
+                <div>
+                    <p>Swipe left to pass or Swipe right to like</p>
+                </div>
+                <div {...handlers} id='swipebox-img-container'>
+                </div>
+                <SwipeCredits />
             </div>
-            <div {...handlers} id='swipebox-img-container'>
-            </div>
-            <SwipeCredits />
         </div>
+
     )
 }
 

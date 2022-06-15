@@ -14,14 +14,16 @@ const Profile = () =>{
     return(
         <div>
             <Navbar />
-            <Stats />
-            <div id='add-photos-container' onClick={() => setOpen(true)}>
-                Add Photos
+            <div className='profile-container'>
+                <Stats />
+                <div id='add-photos-container' onClick={() => setOpen(true)}>
+                    Add Photos
+                </div>
+                <PicturesList />
+                {open ? 
+                <SelectPhotos setOpen={setOpen} />
+                : null}
             </div>
-            <PicturesList />
-            {open ? 
-            <SelectPhotos setOpen={setOpen} />
-            : null}
 
         </div>
     )

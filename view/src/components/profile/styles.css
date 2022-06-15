@@ -1,5 +1,11 @@
-#add-photos-button{ 
-    margin: 10px;
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-photos-button{
     text-decoration: none;
 
     font-family: 'Roboto';
@@ -14,11 +20,14 @@
 }
 
 #add-photos-container{
-    margin: 10px;
+    user-select: none;
+    cursor: pointer;
+    margin: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 387px;
+
     height: 29.38px;
 
     background: #FFFFFF;

@@ -38,7 +38,7 @@ const SwipeCredits = () =>{
                         <div className='stat-bar-progress'></div>
                 </div>
             </div>
-            <div className='shareprofile-container'>
+            <div className='shareprofile-container' id='share-for-more-credits-container'>
                 <button className='shareprofile-button'>Share for More Credits</button>
             </div>
         </div>
