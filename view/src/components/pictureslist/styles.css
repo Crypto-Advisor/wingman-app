@@ -1,6 +1,7 @@
 .profile-items-container{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .profile-item{

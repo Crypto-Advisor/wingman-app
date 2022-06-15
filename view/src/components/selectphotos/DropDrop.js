@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { FileUploader } from "react-drag-drop-files";
 import selectphoto from '../../images/select-photo.svg'
@@ -9,6 +9,7 @@ import { uploadImage } from "./SelectPhotosSlice";
 const fileTypes = ["JPG", "PNG", "JPEG"];
 
 function DragDrop() {
+  const loading = useSelector(state => state.photos.loading)
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
 
@@ -23,9 +24,15 @@ function DragDrop() {
         }).catch(err => console.log(err))
         console.log(snapshot)
         console.log('Uploaded a blob or file!');
-        window.location = '/profile'
       });
   };
+
+  useEffect(() =>{
+    if(loading === false){
+      window.location = '/profile'
+    }
+  }, [loading])
+
   return (
     <FileUploader handleChange={handleChange} name="file" types={fileTypes} >
             <div className='select-photo-box' id='photo-box'>

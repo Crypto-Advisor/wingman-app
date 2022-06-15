@@ -29,6 +29,20 @@ const get_user = async (req, res, next) =>{
   }
 }
 
+const get_stats = async (req, res, next) =>{
+  const {id} = req.params;
+  if(req.user.user_id !== id){
+    res.json({success: false, error: "invalid user"});
+  }
+  try{
+    let result = await pool.query('SELECT SUM(likes) AS total_likes, SUM(total_votes) AS total_votes FROM images WHERE user_id=$1', [id]);
+    res.json({success: true, result});
+  }
+  catch(err){
+    res.json({success: false, err});
+  }
+}
+
 const update_user = async (req, res, next) =>{
   const {user_id, like_weight, total_votes, viewing_credits} = req.body;
   try{
@@ -52,4 +66,4 @@ const delete_user = async (req, res, next) =>{
 }
 
 
-module.exports = { create_user, get_user, update_user, delete_user };
+module.exports = { create_user, get_user, get_stats, update_user, delete_user };

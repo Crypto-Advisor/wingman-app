@@ -14,10 +14,6 @@ const PicturesList = () =>{
         dispatch(getPictures())
     }, [])
 
-    useEffect(() =>{
-        console.log(pictures)
-    }, [loading])
-
     return(
         <div className='profile-items-container'>
             {pictures.map((picture) =>{

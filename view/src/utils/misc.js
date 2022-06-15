@@ -7,7 +7,6 @@ export const idToken = () =>{
     onAuthStateChanged(authentication, (userCred) =>{
         if(userCred){
             userCred.getIdToken(true).then((token) =>{
-                console.log(token)
                 window.localStorage.setItem('auth_token', token)
             })
             window.localStorage.setItem("auth", "true")

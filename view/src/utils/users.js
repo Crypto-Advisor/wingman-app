@@ -23,6 +23,15 @@ export const getUser = async(user_id, token) =>{
     return req.then(response => response.data);
 }
 
+export const getStats = async(user_id, token) =>{
+    const req = axios.get(`${S_PORT}${baseUrl}/stats/${user_id}`, {
+        headers: {
+            'Authorization': token
+        }
+    })
+    return req.then(response => response.data);
+}
+
 export const updateUser = async(user_id, like_weight, total_votes, viewing_credits, token) =>{
     const req = axios.post(`${S_PORT}${baseUrl}/update`, {user_id, like_weight, total_votes, viewing_credits}, {
         headers: {

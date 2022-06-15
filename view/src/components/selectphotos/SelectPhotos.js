@@ -14,7 +14,7 @@ const SelectPhotos = ({setOpen}) =>{
 
     return(
         <div className='select-photo-popup'>
-            <a class="close" onClick={() => setOpen(false)}></a>
+            <a className="close" onClick={() => setOpen(false)}></a>
             <div className='logo-container' id='popup-logo-container'>
                 <img className='logo' id='popup-logo' src={swan} ></img>
                 <p className='logo-text' id='popup-logo' >wingman</p>

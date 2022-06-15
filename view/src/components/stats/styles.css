@@ -1,4 +1,8 @@
 .stats-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
 
     width: 393px;
@@ -10,11 +14,30 @@
     border-radius: 15px;
 }
 
+.banner-text-popup-container{
+    width: 332px;
+}
+
+.banner-text-popup-container:after{
+    width: 257px;
+    content:' ';
+    display:block;
+    border:1px solid #C1C1C1;
+}
+
 .stats-item-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.stat{
+    margin: 10px;
+}
+
+.stat p{
+    margin: 1px;
 }
 
 .stat-bar-outline{
@@ -36,7 +59,7 @@
 
 
 .stats-description{
-    margin: 10px;
+    margin: 0px;
     width: 335px;
 }
 
@@ -45,7 +68,7 @@
 }
 
 .shareprofile-button{
-    margin: 10px;
+    margin-bottom: 5px;
 
     font-family: 'Roboto';
     font-style: normal;
