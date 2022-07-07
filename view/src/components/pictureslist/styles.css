@@ -1,7 +1,10 @@
 .profile-items-container{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
+    width: 100vw;
 }
 
 .profile-item{
@@ -43,4 +46,97 @@
 
 
     color: #FFFFFF;
+}
+
+.picture-info-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 378px;
+    height: 660px;
+
+    background: #FEFEFE;
+    border: 1px solid #C7C7C7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    position:fixed;
+    top:50%;
+    left:50%;
+
+    margin-left:-189px;   /* negative half of width above */
+    margin-top:-330px;   /* negative half of height above */
+}
+
+.picture-info-container h3{
+    width: 206px;
+    height: 29px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #4D4D4D;
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+
+.picture-info-container img{
+    width: 308px;
+    height: 355px;
+
+    border-radius: 12px;
+}
+
+.picture-info-line{
+    width: 308px;
+    height: 3px;
+
+    background: #C1C1C1;
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+
+.picture-info-share{
+    width: 308px;
+    height: 40px;
+
+    background: linear-gradient(88.48deg, #FF7B7B 2.74%, #FF9458 63.5%, #FF6464 113.84%);
+    border-radius: 10px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25px;
+    /* identical to box height */
+    border: none;
+
+    color: #FFFFFF;
+
+}
+
+.picture-info-delete{
+    margin-top: 15px;
+    width: 247px;
+    height: 29.38px;
+
+    background: #FFFFFF;
+    border: 3px solid #C1C1C1;
+    border-radius: 6px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 20px;
+    /* identical to box height */
+
+
+    color: #4E4E4E;
+
 }
